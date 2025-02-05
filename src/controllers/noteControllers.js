@@ -49,3 +49,29 @@ exports.getNoteHTML = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+
+// Check grammar of a note
+exports.checkGrammar = async (req, res) => {
+    try {
+      const note = await Note.findById(req.params.id);
+      if (!note) return res.status(404).json({ error: "Note not found" });
+  
+      const response = await fetch("https://api.languagetool.org/v2/check", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          text: note.content,
+          language: "en-US", // Change language if needed
+        }),
+      });
+  
+      if (!response.ok) {
+        return res.status(500).json({ error: "Grammar check service error" });
+      }
+  
+      const data = await response.json();
+      res.json(data);
+    } catch (error) {
+      res.status(500).json({ error: "Server error" });
+    }
+};

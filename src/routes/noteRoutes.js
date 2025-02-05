@@ -13,5 +13,6 @@ router.post("/upload", upload.single("file"), uploadNote);
 router.get("/", getNotes);
 router.get("/:id", getNote);
 router.get("/:id/html", getNoteHTML);
+router.get("/:id/grammar", checkGrammar);
 
 module.exports = router;
