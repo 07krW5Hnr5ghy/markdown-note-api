@@ -26,8 +26,8 @@ This API allows users to upload Markdown notes, check their grammar, save them, 
 ### **1️⃣ Clone Repository**
 
 ```sh
-git clone https://github.com/your-repo/markdown-notes-api.git
-cd markdown-notes-api
+git clone https://github.com/07krW5Hnr5ghy/markdown-note-api
+cd markdown-note-api
 ```
 
 ### **2️⃣ Install Dependencies**
@@ -43,7 +43,6 @@ Create a `.env` file and add:
 ```
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
-LANGUAGE_TOOL_API=https://api.languagetool.org/v2/check
 ```
 
 ### **4️⃣ Start Server**
